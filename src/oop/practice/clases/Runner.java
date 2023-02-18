@@ -2,6 +2,8 @@ package oop.practice.clases;
 
 import oop.practice.clases.airline.Airline;
 import oop.practice.clases.airline.AirlineService;
+import oop.practice.clases.book.Book;
+import oop.practice.clases.book.BookService;
 import oop.practice.clases.bus.Bus;
 import oop.practice.clases.bus.BusService;
 import oop.practice.clases.henfactory.Country;
@@ -52,6 +54,16 @@ public class Runner {
                 System.out.println("\nc) Display a list of buses whose mileage is greater than the given distance: ");
                 int mileage = Reader.readIntValue("Mileage: ");
                 busService.busesByMileage(mileage);
+            }
+            case 3 -> {
+                Book[] books = InitData.initBooks();
+                BookService bookService = new BookService(books);
+                String author = Reader.readString("\na) Display a list of books by author: ");
+                System.out.println(Arrays.toString(bookService.booksByAuthor(author)));
+                String publishHouse = Reader.readString("\nb) Display a list of books by publish house: ");
+                System.out.println(Arrays.toString(bookService.booksByPublishHouse(publishHouse)));
+                int year = Reader.readIntValue("\nc) Display a list of books by year: ");
+                System.out.println(Arrays.toString(bookService.booksByYear(year)));
             }
             case 4 -> {
                 Airline[] airlines = InitData.initAirline();

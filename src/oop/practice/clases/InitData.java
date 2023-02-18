@@ -46,11 +46,11 @@ public class InitData {
         books[0] = new Book(1, "Java", new String[]{"Sergei", "Egor", "Nikita"}, "Piter",
                 2012, 560, BindingType.SOFT);
         books[1] = new Book(2, "Python", new String[]{"Ivan", "Egor", "Nikita"}, "Moskva",
-                2016, 560, BindingType.SOFT);
+                2016, 160, BindingType.SOFT);
         books[2] = new Book(3, "Golang", new String[]{"Andrei", "Egor", "Nikita"}, "Minsk",
-                2012, 560, BindingType.SOFT);
+                2012, 350, BindingType.SOFT);
         books[3] = new Book(4, "JavaScript", new String[]{"Alexandr", "Egor", "Nikita"}, "Piter",
-                2017, 560, BindingType.SOFT);
+                2017, 860, BindingType.SOFT);
         return books;
     }
 
