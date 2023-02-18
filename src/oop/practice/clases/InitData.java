@@ -1,13 +1,45 @@
 package oop.practice.clases;
 
+import oop.practice.clases.airline.AircraftType;
+import oop.practice.clases.airline.Airline;
+import oop.practice.clases.airline.DaysOfWeek;
 import oop.practice.clases.book.BindingType;
 import oop.practice.clases.book.Book;
 import oop.practice.clases.bus.Bus;
 import oop.practice.clases.patient.Patient;
 import oop.practice.clases.person.Person;
 import oop.practice.clases.phone.Phone;
+import oop.practice.clases.travelvouchers.*;
+
+import java.util.ArrayList;
 
 public class InitData {
+
+    public static ArrayList<TourPackage> initTours() {
+        ArrayList<TourPackage> tours = new ArrayList<>();
+
+        tours.add(new TourPackage("Spain", "Barcelona", TourType.CRUISE,
+                TransportType.SHIP, FoodType.BREAKFAST, 12, 1099.99));
+        tours.add(new TourPackage("Spain", "Salou", TourType.RECREATION,
+                TransportType.PLANE, FoodType.ALL_INCLUSIVE, 14, 1699.89));
+        tours.add(new TourPackage("Spain", "Madrid", TourType.EXCURSION,
+                TransportType.BUS, FoodType.NOT_ALL_INCLUSIVE, 5, 400.10));
+        tours.add(new TourPackage("Spain", "Malaga", TourType.RECREATION,
+                TransportType.PLANE, FoodType.BREAKFAST, 15, 1400.20));
+        tours.add(new TourPackage("Spain", "Barcelona", TourType.TREATMENT,
+                TransportType.BUS, FoodType.NOT_ALL_INCLUSIVE, 8, 500.80));
+        tours.add(new TourPackage("Italy", "Rome", TourType.EXCURSION,
+                TransportType.PLANE, FoodType.ALL_INCLUSIVE, 10, 950.36));
+        tours.add(new TourPackage("Italy", "Venice", TourType.CRUISE,
+                TransportType.SHIP, FoodType.BREAKFAST, 20, 1099.91));
+        tours.add(new TourPackage("Italy", "Milan", TourType.SHOPPING,
+                TransportType.PLANE, FoodType.BREAKFAST, 3, 399.99));
+        tours.add(new TourPackage("Italy", "Florence", TourType.TREATMENT,
+                TransportType.TRAIN, FoodType.ALL_INCLUSIVE, 13, 1099.11));
+        tours.add(new TourPackage("Italy", "Rome", TourType.SHOPPING,
+                TransportType.CAR, FoodType.NOT_ALL_INCLUSIVE, 7, 599.50));
+        return tours;
+    }
 
     public static Book[] initBooks() {
         Book[] books = new Book[4];
@@ -20,6 +52,19 @@ public class InitData {
         books[3] = new Book(4, "JavaScript", new String[]{"Alexandr", "Egor", "Nikita"}, "Piter",
                 2017, 560, BindingType.SOFT);
         return books;
+    }
+
+    public static Airline[] initAirline() {
+        Airline[] airlines = new Airline[4];
+        airlines[0] = new Airline("Minsk-Moskow", 3, AircraftType.CHARTER_FLIGHT,
+                "18:55", DaysOfWeek.SATURDAY);
+        airlines[1] = new Airline("Berlin-Minsk", 2, AircraftType.CONNECTING_FLIGHT,
+                "05:45", DaysOfWeek.MONDAY);
+        airlines[2] = new Airline("Minsk-Riga", 1, AircraftType.CHARTER_FLIGHT,
+                "08:32", DaysOfWeek.MONDAY);
+        airlines[3] = new Airline("Warsaw-Minsk", 4, AircraftType.DIRECT_NON_SCHEDULED_FLIGHT,
+                "15:15", DaysOfWeek.TUESDAY);
+        return airlines;
     }
 
     public static Patient[] initPatients() {
@@ -61,9 +106,9 @@ public class InitData {
         Phone phone2 = new Phone();
         Phone phone3 = new Phone();
 
-        System.out.println(phone1.toString());
-        System.out.println(phone2.toString());
-        System.out.println(phone3.toString());
+        System.out.println(phone1);
+        System.out.println(phone2);
+        System.out.println(phone3);
 
         phone1.receiveCall("Anatoliy");
         phone2.receiveCall("Sergei");
