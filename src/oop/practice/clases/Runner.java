@@ -6,6 +6,7 @@ import oop.practice.clases.book.Book;
 import oop.practice.clases.book.BookService;
 import oop.practice.clases.bus.Bus;
 import oop.practice.clases.bus.BusService;
+import oop.practice.clases.car.*;
 import oop.practice.clases.henfactory.Country;
 import oop.practice.clases.henfactory.HenFactory;
 import oop.practice.clases.patient.Patient;
@@ -30,6 +31,7 @@ public class Runner {
                 (7) Text
                 (8) Travel vouchers
                 (9) Hen factory
+                (10) Car
                                 
                 Select task:""");
         switch (chooseTask) {
@@ -140,6 +142,26 @@ public class Runner {
                 System.out.println(new HenFactory().breed(Country.UKRAINE).getDescription());
                 System.out.println(new HenFactory().breed(Country.MOLDOVA).getDescription());
                 System.out.println(new HenFactory().breed(Country.RUSSIA).getDescription());
+            }
+            case 10 -> {
+                Car car1 = new Car("Mercedes Benz", 280, 3.0);
+                System.out.println(car1.getModel());
+                car1.refueled();
+
+                car1.setWheels(new Wheel(16, WheelType.WINTER, RimsType.ALLOY, WheelPosition.FRONT_LEFT),
+                        new Wheel(16, WheelType.WINTER, RimsType.ALLOY, WheelPosition.FRONT_RIGHT),
+                        new Wheel(15, WheelType.SUMMER, RimsType.STAMPED, WheelPosition.REAR_LEFT),
+                        new Wheel(16, WheelType.WINTER, RimsType.ALLOY, WheelPosition.REAR_RIGHT));
+                car1.printWheels();
+
+                car1.changeWheel(WheelPosition.REAR_LEFT,
+                        new Wheel(16, WheelType.WINTER, RimsType.ALLOY, WheelPosition.REAR_LEFT));
+                car1.printWheels();
+
+                car1.setWheels(new Wheel(16, WheelType.WINTER, RimsType.ALLOY, WheelPosition.FRONT_RIGHT));
+                car1.printWheels();
+
+                car1.run();
             }
         }
     }
