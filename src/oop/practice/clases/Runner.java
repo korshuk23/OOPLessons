@@ -2,6 +2,9 @@ package oop.practice.clases;
 
 import oop.practice.clases.airline.Airline;
 import oop.practice.clases.airline.AirlineService;
+import oop.practice.clases.bankaccount.Account;
+import oop.practice.clases.bankaccount.Bank;
+import oop.practice.clases.bankaccount.BankClient;
 import oop.practice.clases.book.Book;
 import oop.practice.clases.book.BookService;
 import oop.practice.clases.bus.Bus;
@@ -15,6 +18,8 @@ import oop.practice.clases.text.Sentence;
 import oop.practice.clases.text.Text;
 import oop.practice.clases.text.Word;
 import oop.practice.clases.travelvouchers.*;
+import oop.practice.clases.country.*;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +37,8 @@ public class Runner {
                 (8) Travel vouchers
                 (9) Hen factory
                 (10) Car
-                                
+                (11) Country
+                (12) Bank Account
                 Select task:""");
         switch (chooseTask) {
             case 1 -> {
@@ -162,6 +168,61 @@ public class Runner {
                 car1.printWheels();
 
                 car1.run();
+            }
+            case 11 -> {
+                Country2 belarus = new Country2("Belarus", "Minsk");
+                belarus.addRegions(new Region(RegionType.MINSK_REGION, 39854, 45654354),
+                        new Region(RegionType.VITEBSK_REGION, 40051, 4564554),
+                        new Region(RegionType.BREST_REGION, 32786, 7685645),
+                        new Region(RegionType.GOMEL_REGION, 40372, 52356454),
+                        new Region(RegionType.MOGILEV_REGION, 29068, 3456424),
+                        new Region(RegionType.GRODNO_REGION, 25127, 3576345));
+                belarus.printCapital();
+                belarus.printNumberOfRegions();
+                belarus.printArea();
+                belarus.printRegionalCenter();
+
+            }
+            case 12 -> {
+                Bank alphaBank = new Bank("Alpha bank");
+                BankClient client1 = new BankClient("Nikolai", "Borisov", "ME2848145");
+                BankClient client2 = new BankClient("Sergei", "Apanasevich", "MC1364814");
+
+                alphaBank.addClient(client1, client2);
+
+                client1.openAccount(new Account(103.43));
+                client1.openAccount(new Account(500.32));
+                client1.openAccount(new Account(13.43));
+                client1.openAccount(new Account(3333.43));
+
+                client2.openAccount(new Account(45.5));
+                client2.openAccount(new Account(225.33));
+                client2.openAccount(new Account(-25.52));
+                client2.openAccount(new Account(325.12));
+
+                System.out.println(alphaBank.getClient(client1.getPassportId()).getAccount(1).getStatus());
+                client1.blockAccount(1);
+                System.out.println(alphaBank.getClient(client1.getPassportId()).getAccount(1).getStatus());
+
+                System.out.println(alphaBank.getClient(client1.getPassportId()).getInformation());
+                alphaBank.getClient(client1.getPassportId()).sortByBalance();
+
+                System.out.println("Total balance of client  " +
+                        alphaBank.getClient(client1.getPassportId()).getFIO() +
+                        alphaBank.getClient(client1.getPassportId()).getBalance());
+
+                System.out.println("Total balance of client " +
+                        alphaBank.getClient(client2.getPassportId()).getFIO() +
+                        alphaBank.getClient(client2.getPassportId()).getBalance());
+
+                System.out.println("Total positive balance " +
+                        alphaBank.getClient(client1.getPassportId()).getFIO() +
+                        alphaBank.getClient(client1.getPassportId()).getBalancePositiveAccounts());
+
+                System.out.println("Total negative balance " +
+                        alphaBank.getClient(client2.getPassportId()).getFIO() +
+                        alphaBank.getClient(client2.getPassportId()).getBalanceNegativeAccounts());
+
             }
         }
     }
