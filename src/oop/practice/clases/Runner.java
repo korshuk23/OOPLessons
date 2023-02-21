@@ -17,10 +17,13 @@ import oop.practice.clases.patient.PatientService;
 import oop.practice.clases.text.Sentence;
 import oop.practice.clases.text.Text;
 import oop.practice.clases.text.Word;
+import oop.practice.clases.train.Train;
+import oop.practice.clases.train.TrainService;
 import oop.practice.clases.travelvouchers.*;
 import oop.practice.clases.country.*;
 
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -223,6 +226,26 @@ public class Runner {
                         alphaBank.getClient(client2.getPassportId()).getFIO() +
                         alphaBank.getClient(client2.getPassportId()).getBalanceNegativeAccounts());
 
+            }
+            case 13 -> {
+                TrainService trains = new TrainService();
+                trains.addTrains(
+                        new Train("Gomel", "456", "05:58"),
+                        new Train("Vilnus", "687", "10:48"),
+                        new Train("Moskow", "931", "13:15"),
+                        new Train("Berlin", "094", "22:15"),
+                        new Train("Berlin", "099", "18:41"),
+                        new Train("Kiev", "133", "06:40"));
+
+                System.out.println("Trains sorted by number: ");
+                trains.sortByTrainNumber();
+                trains.printTrains();
+
+                System.out.println("\nTrain number 133 info: ");
+                System.out.println(trains.getInformation("133"));
+                System.out.println("\nTrains sorted by destination and departure time");
+                trains.sortByDestination();
+                trains.printTrains();
             }
         }
     }
